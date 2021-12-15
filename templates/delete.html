@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> this is delete page </h1>
+    <form method='POST'>
+        {% csrf_token %}
+    <label>Eid</label><input type="number" name="eid" id="id_eid" required><br>
+    <input type="submit" value="fetch">
+    </form>
+    <br>
+    <br>
+    {%if res %}
+    <form method="post" action="{%url 'demo:delete_value'%}">
+        {% csrf_token %}
+    <label>Eid</label><input type="number" name="eid" id="id_eid"  value={{res.0}} required><br>
+    <label>Ename</label><input type="text" name="ename" id="id_ename"  value={{res.1}} required><br>
+    <label>Email</label><input type="Email" name="email" id="id_email"  value={{res.2}} required><br>
+    <input type="submit" value="delete">
+    </form>
+    {% endif %}
+</body>
+</html>
